@@ -7,11 +7,7 @@ def get_image(url, filename):
 
     images_path = f'./images/{filename}'
     directory = os.path.dirname(images_path)
-
-    try:
-        os.stat(directory)
-    except:
-        os.mkdir(directory)
+    os.makedirs(directory, exist_ok = True)
 
     response = requests.get(url, verify = True)
     response.raise_for_status()
@@ -27,7 +23,7 @@ def get_links_from_habble(id_image):
     links = []
     for i in image_files:
         links.append('https:'+i['file_url'])
-    return links 
+    return links
 
 def get_exphansion_image(links):
     lst = links.split('/')
@@ -45,7 +41,7 @@ def fetch_habble_images():
 
 def get_id_image_from_habble_collection(collection):
     url = 'https://hubblesite.org/api/v3/images'
-    
+
     payload = {
             'collection_name': collection,
             'page': 'all'
@@ -75,8 +71,8 @@ def main():
     parser.add_argument('collect', help='Укажите название коллекции, например: wallpaper, news, spacecraft, holiday_cards, printshop, stsci_gallery')
     args = parser.parse_args()
     collection = args.collect
-    
+
     download_all_images_from_collection(collection)
 
 if  __name__ == '__main__':
-    main() 
+    main()

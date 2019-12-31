@@ -11,11 +11,7 @@ def get_image(url, filename):
 
     images_path = f'./images/{filename}'
     directory = os.path.dirname(images_path)
-
-    try:
-        os.stat(directory)
-    except:
-        os.mkdir(directory)
+    os.makedirs(directory, exist_ok = True)
 
     response = requests.get(url, verify = True)
     response.raise_for_status()
@@ -26,7 +22,7 @@ def get_image(url, filename):
 def fetch_spacex_last_launch():
     spacex_url = 'https://api.spacexdata.com/v3/launches/latest'
     links = get_links(spacex_url)
-    
+
     for number, link in enumerate(links):
         filename = f'spaceX{number}.jpeg'
         get_image(link,filename)
