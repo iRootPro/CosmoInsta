@@ -1,17 +1,4 @@
-certifi==2019.11.28
-chardet==3.0.4
-future==0.18.2
-huepy==1.2.1
-idna==2.8
 instabot==0.88.0
 Pillow==6.2.1
-PySocks==1.7.1
 python-dotenv==0.10.3
-pytz==2019.3
 requests==2.22.0
-requests-toolbelt==0.9.1
-responses==0.10.9
-schedule==0.6.0
-six==1.13.0
-tqdm==4.41.0
-urllib3==1.25.7
