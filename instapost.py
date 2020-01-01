@@ -16,9 +16,9 @@ def crop_center(pil_img, crop_width, crop_height):
 def save_cropped_all_files():
     all_image_files = os.listdir('images/')
     for file_image in all_image_files:
-        image = Image.open('images/' + file_image)
+        image = Image.open(f'images/{file_image}'')
         image_crop = crop_center(image, 1080, 1080)
-        image_crop.save('images/' + file_image)
+        image_crop.save('images/{file_image}')
 
 
 def post_all_photos():

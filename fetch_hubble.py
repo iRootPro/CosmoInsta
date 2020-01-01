@@ -27,14 +27,14 @@ def get_links_from_habble(id_image):
     return links
 
 
-def get_exphansion_image(link):
+def get_image_extension(link):
     extension = os.path.splitext(link)
-    return extension[1] 
+    return extension 
 
 
 def fetch_habble_images():
     link = get_links_from_habble()[-1]
-    extension = get_exphansion_image(link)
+    extension = get_image_extension(link)[1]
     image_id = 1
     filename = str(image_id) + extension 
     get_image(link, filename)
@@ -61,7 +61,7 @@ def download_all_images_from_collection(collection):
     links_images = []
     for id_image in ids:
         link = get_links_from_habble(id_image)[-1]
-        filename = str(id_image) + '.' + get_exphansion_image(link)
+        filename = f"{str(id_image)}{get_image_extension(link)}"
         get_image(link, filename)
 
 
